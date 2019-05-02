@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id":1,
+      "name":"Perico",
+      "lastname":"Palotes",
+      "git user": "PericoPalotes",
+      "email": "Pericopl@gmail.com",
+      "phone": "932323232",
+      "url_avatar": "https://www.shareicon.net/data/2016/08/05/806962_user_512x512.png",
+      "about": "I'm an unstoppable"
+    }
+  ]
+}
