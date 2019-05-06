@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "webpack-dev-server --open --config webpack.dev.js",
-    "prod": "webpack --config webpack.prod.js"
+    "prod": "webpack --config webpack.prod.js",
+    "server": "json-server --watch ./db/db.json"
   },
   "keywords": [],
   "author": "",

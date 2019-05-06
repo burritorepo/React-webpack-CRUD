@@ -13,12 +13,11 @@ export class Header extends Component {
               Logo
             </NavLink>
           </div>
-          <div className="navbar-menu">
+          <div>
             <div className="navbar-end">
               <NavLink to="/create" className="navbar-item" activeClassName="is-active">
                 Create user
                 </NavLink>
-
               <NavLink to="/users" className="navbar-item" activeClassName="is-active">
                 Users
                 </NavLink>
