@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import {
   CreateUser
-} from '../../containers/createUser/index'
+} from './Container/createUser/index'
 
 import './create.scss';
 
