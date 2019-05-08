@@ -1,5 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
+import { createBrowserHistory } from 'history';
 
 import './assets/styles/main.scss';
 
@@ -7,12 +8,7 @@ import {
   Header,
   Main,
   Footer,
-} from './presentation/layout';
-
-import {
-PageCreate,
-PageUsers
-} from './presentation/pages'
+} from './common';
 
 export function App() {
   return (
@@ -20,9 +16,6 @@ export function App() {
       <Router>
         <Header />
         <Main>
-          <Route exact path="/" component={PageUsers} /> 
-          <Route path="/users" component={PageUsers} />
-          <Route path="/create" component={PageCreate} />
         </Main>
         <Footer />
       </Router>

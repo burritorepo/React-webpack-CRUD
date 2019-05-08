@@ -7,24 +7,25 @@ export class Header extends Component {
   render() {
     return (
       <header>
-        <div className="navbar is-warning has-background-grey has-text-black">
+        <nav className="navbar has-background-grey" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <NavLink to="/">
-              Logo
-            </NavLink>
+            <a className="navbar-item">
+              <img src="https://bulma.io/images/bulma-logo.png" width={112} height={28} />
+            </a>
           </div>
-          <div>
+          <div className="navbar-menu is-active">
             <div className="navbar-end">
               <NavLink to="/create" className="navbar-item" activeClassName="is-active">
                 Create user
-                </NavLink>
+            </NavLink>
               <NavLink to="/users" className="navbar-item" activeClassName="is-active">
                 Users
-                </NavLink>
+            </NavLink>
             </div>
           </div>
-        </div>
-      </header>
+        </nav>
+      </header >
+
     );
   }
 }

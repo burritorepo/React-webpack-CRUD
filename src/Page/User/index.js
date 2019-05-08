@@ -1,4 +1,4 @@
-import React, { Component } from 'react'; // Tomando el atributo component de React
+import React, { Component } from 'react'; 
 
 import './users.scss';
 
