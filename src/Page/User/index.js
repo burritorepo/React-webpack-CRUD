@@ -1,4 +1,4 @@
-import React, { Component } from 'react'; 
+/* import React, { Component } from 'react'; 
 
 import './users.scss';
 
@@ -8,4 +8,4 @@ export class PageUsers extends Component {
         <div>Page Users</div>
       );
     }
-  }
+  } */

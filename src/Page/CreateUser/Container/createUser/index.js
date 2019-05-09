@@ -1,24 +1,45 @@
-import React, { Component } from 'react';
+// REACT
+import React, { Component } from 'react'; // To avoid writing React.Component every time
+// REDUX
+import { connect } from 'react-redux'; // To connect this component to my redux's store
+// STYLES
+import '../../CreateUser.scss';
+import { FormUser } from '../../../../common/FormUser';
+import UserService from '../../../../Api/UserService'
+import { saveUser, saveAllUser } from '../../../../Store/Actions';
 
-import '../../assets/styles/main.scss';
-import './createUser.scss';
-
-export class CreateUser extends Component {
-
+// COMPONENT declaration
+class CreateUser extends Component {
   constructor(props) {
+
     super(props);
+
     this.state = {
-      name: 'Hola',
-      lastname: 'Apellido',
-      email: 'Correo@gmail.com'
+      name: '',
+      lastname: '',
+      email: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.createUser = this.createUser.bind(this);
   }
 
+  createUser() {
+    const { dispatch } = this.props;
+
+    UserService.createUser(JSON.stringify(this.state))
+      .then((response)  => {
+        dispatch(saveUser(response))
+        dispatch(saveAllUser(response))
+      }
+      )
+    }
+
   handleChange() {
+    const target = event.target;
     const value = target.value;
+    const name = target.name;
 
     this.setState({
       [name]: value
@@ -27,83 +48,21 @@ export class CreateUser extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
+    this.createUser();
   }
 
   render() {
     return (
-      <card>
-        <div class="container is-fluid">
-          <form class="formCreate" onSubmit={this.handleSubmit}>
-            <div>
-              <div className="field">
-                <label className="label">Name</label>
-                <div className="control">
-                  <input
-                    name="name"
-                    className="input"
-                    type="text"
-                    placeholder="Text input"
-                    value={this.state.name}
-                    onChange={this.handleChange} />
-                </div>
-              </div>
-              <div className="field">
-                <label className="label">Lastname</label>
-                <div className="control has-icons-left has-icons-right">
-                  <input
-                    name="lastname"
-                    className="input"
-                    type="text"
-                    placeholder="Text input"
-                    defaultValue="bulma"
-                    value={this.state.lastname}
-                    onChange={this.handleChange} />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-user" />
-                  </span>
-                  <span className="icon is-small is-right">
-                    <i className="fas fa-check" />
-                  </span>
-                </div>
-              </div>
-              <div className="field">
-                <label className="label">Email</label>
-                <div className="control has-icons-left has-icons-right">
-                  <input
-                    name="email"
-                    className="input"
-                    type="email"
-                    placeholder="Email input"
-                    defaultValue="bulma@gmail.com"
-                    value={this.state.email}
-                    onChange={this.handleChange} />
-                  <span className="icon is-small is-left">
-                    <i className="fas fa-envelope" />
-                  </span>
-                  <span className="icon is-small is-right">
-                    <i className="fas fa-exclamation-triangle" />
-                  </span>
-                </div>
-              </div>
-              <div className="field is-grouped">
-                <div className="control">
-                  <button className="button is-link">Submit</button>
-                </div>
-                <div className="control">
-                  <button className="button is-text">Cancel</button>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </card>
+      <FormUser {...this.state} onSubmit={this.handleSubmit} onChange={this.handleChange} />
     );
   }
 }
 
+const PageCreateUser = connect()(CreateUser)
 
-
+export {
+  PageCreateUser // new component with dispatch attribute from connect() method
+}
 
 
 
